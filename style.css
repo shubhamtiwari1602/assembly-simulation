@@ -1,0 +1,222 @@
+:root {
+    --primary: #2c3e50;
+    --secondary: #3498db;
+    --accent: #e74c3c;
+    --light: #ecf0f1;
+    --dark: #2c3e50;
+    --success: #2ecc71;
+    --warning: #f39c12;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f7fa;
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+button {
+    background-color: var(--secondary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    width: 200px;
+}
+
+.optimal-marker {
+    position: absolute;
+    top: -10px;
+    color: #2ecc71;
+    font-size: 12px;
+    pointer-events: none;
+}
+
+.conveyor-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.visualization {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+#graph {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    background-color: #f8f9fa;
+    background-image: 
+        linear-gradient(to right, #e9ecef 1px, transparent 1px),
+        linear-gradient(to bottom, #e9ecef 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.conveyor-path {
+    stroke: #6c757d;
+    stroke-width: 3;
+    stroke-dasharray: 5,5;
+    fill: none;
+}
+
+.assembly-part {
+    transition: all 0.5s linear;
+}
+
+.assembly-label {
+    font-size: 10px;
+    font-weight: bold;
+    text-anchor: middle;
+    pointer-events: none;
+}
+
+.assembly-operation {
+    font-size: 14px;
+    font-weight: bold;
+    fill: #2c3e50;
+    text-anchor: middle;
+    animation: pulse 0.5s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.05); }
+}
+
+.metric-details {
+    display: none;
+    padding: 10px;
+    margin-top: 5px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.metric-item {
+    cursor: pointer;
+}
+
+.metric-item:hover .metric-details {
+    display: block;
+}
+
+.final-assembly {
+    fill: #28a745;
+    stroke: #218838;
+    stroke-width: 2;
+    rx: 5;
+    ry: 5;
+}
+
+#metrics {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+
+.node {
+    transition: all 0.3s ease;
+}
+
+.node:hover {
+    transform: scale(1.05);
+}
+
+.link {
+    stroke-opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.link:hover {
+    stroke-opacity: 1;
+    stroke-width: 3px;
+}
+
+.metric-item {
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    background: var(--light);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.metric-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.highlight {
+    animation: pulse 1.5s infinite;
+}
+
+@media (max-width: 768px) {
+    .visualization {
+        grid-template-columns: 1fr;
+    }
+}
